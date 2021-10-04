@@ -1,0 +1,50 @@
+#common_properties
+Common:
+  NotificationType:
+    Slack:
+      SlackChannel: af-client-testing
+
+
+#D1-LINE-PROPERTIES
+d1:
+ Test: all
+ EnableAjex: true
+ ServiceTests:
+  central-auth/central-auth-test:
+   JobParameter:
+    Line: d1
+    BRANCH: gisc-kt
+ np:
+   Stages: health->smoke->a|b|c
+   CustomParameters: eibEnv=d1-np,testEnv=d1-np,fibEnv=d1-np,s3Folder=14,npeEnv=d,releaseVersion=[version]
+ spint:
+   Stages: health->smoke->regression->ps4|ps5
+   CustomParameters: eibEnv=d1-spint,testEnv=d1-spint,fibEnv=d1-spint,s3Folder=14,npeEnv=d,releaseVersion=[version]
+ pqa:
+   Stages: health->abc|regression|s4|s5
+   CustomParameters: eibEnv=d1-pqa,testEnv=d1-pqa,fibEnv=d1-pqa,s3Folder=14,npeEnv=d,releaseVersion=[version]
+ pmgt:
+   Stages: health->smoke->performance
+   CustomParameters: eibEnv=d1-pmgt,testEnv=d1-pmgt,fibEnv=d1-pmgt,s3Folder=14,npeEnv=d,releaseVersion=[version]
+ 
+#Q1-LINE-PROPERTIES
+q1:
+ Test: all
+ EnableAjex: true
+ ServiceTests:
+  central-auth/central-auth-test:
+   JobParameter:
+    Line: q1
+    BRANCH: gisc-kt
+ np:
+   Stages: health->smoke->a|b|c
+   CustomParameters: eibEnv=q1-np,testEnv=q1-np,fibEnv=q1-np,s3Folder=14,npeEnv=q,releaseVersion=[version]
+ spint:
+   Stages: health->smoke->regression->ps4|ps5
+   CustomParameters: eibEnv=q1-spint,testEnv=q1-spint,fibEnv=q1-spint,s3Folder=14,npeEnv=q,releaseVersion=[version]
+ pqa:
+   Stages: health->abc|regression|s4|s5
+   CustomParameters: eibEnv=q1-pqa,testEnv=q1-pqa,fibEnv=q1-pqa,s3Folder=14,npeEnv=q,releaseVersion=[version]
+ pmgt:
+   Stages: health->smoke->performance
+   CustomParameters: eibEnv=q1-pmgt,testEnv=q1-pmgt,fibEnv=q1-pmgt,s3Folder=14,npeEnv=q,releaseVersion=[version]

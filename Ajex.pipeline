@@ -1,0 +1,25 @@
+@Library("local-shared-library") _
+import groovy.transform.Field
+@Field def Map<String,String> parameterMap = new LinkedHashMap<String, String>()
+
+@Field def Map<String,String> ajexMap = new LinkedHashMap<String, String>()
+@Field def ajexenabled=false
+
+
+
+pipeline {
+    agent any
+    stages {
+	stage('Init')
+	{
+        steps {
+               script 
+               {
+               
+                 stages.initStage(this)
+               }
+            }
+    }
+   }   
+}
+© 2021 GitHub, Inc.
